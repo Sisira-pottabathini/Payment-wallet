@@ -1,24 +1,27 @@
-// eslint-disable-next-line no-unused-vars
-import React from "react";
-import { Line } from "react-chartjs-2";
+// src/components/TransactionGraph.js
+import { Bar } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement } from 'chart.js';
+
+ChartJS.register(CategoryScale, LinearScale, BarElement);
 
 const TransactionGraph = () => {
   const data = {
-    labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
+    labels: ['2025-01-01', '2025-01-02', '2025-01-03'],
     datasets: [
       {
-        label: "Transactions",
-        data: [200, 400, 100, 500],
-        borderColor: "blue",
-        backgroundColor: "rgba(0, 123, 255, 0.2)",
+        label: 'Transactions',
+        data: [50, -30, 20], // Positive for credit, negative for debit
+        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1,
       },
     ],
   };
 
   return (
     <div>
-      <h3>Transaction Graph</h3>
-      <Line data={data} />
+      <h2>Transaction Graph</h2>
+      <Bar data={data} />
     </div>
   );
 };
